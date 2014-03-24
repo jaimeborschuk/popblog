@@ -1,9 +1,16 @@
 var express = require('express');
+var routes = require('./routes');
 var app = express();
+var dbfile = "popblog.db";
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database(dbfile);
+var path = require('path');
 
-app.get('/', function(req, res){
-  res.send('pop blog');
-});
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', routes.index);
 
 app.get('/admin', function(req, res){
   res.send('pop blog admin');

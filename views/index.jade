@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1.
+		Blog Posts
+	ul
+		each id, title in posts
+	li
+		p #{id} - #{title}
+	
