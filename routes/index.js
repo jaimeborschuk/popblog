@@ -7,6 +7,6 @@ exports.index = function(db) {
 	  	 });
       //console.log(row.id + ":" + row.title);
 	  //response[row.id] = row.title;
-    	};
+    	});
 	};  
 };
