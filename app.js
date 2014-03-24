@@ -11,6 +11,7 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
+app.get('/blog', routes.blog(db));
 
 app.get('/admin', function(req, res){
   res.send('pop blog admin');
