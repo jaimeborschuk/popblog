@@ -4,6 +4,7 @@ block content
   h1.
     POP BLOGSZ!
   ul
-    each row in posts
+    each post in posts
       li
-        p #{row}
+        p #{post.id} - #{post.author} : #{post.title}
+        

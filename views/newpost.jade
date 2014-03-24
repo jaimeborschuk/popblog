@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  form#formAddPost(name="addpost",method="post",action="/addpost")
+      input#inputAuthor(type="text", placeholder="author", name="author")
+      input#inputTitle(type="text", placeholder="title", name="title")
+      input#inputPost(type="text", placeholder="post", name="post")
+      button#btnSubmit(type="submit") submit

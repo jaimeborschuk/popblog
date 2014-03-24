@@ -1,34 +1,31 @@
-exports.index = function(req, res) {
-    var response = {title: "POP"};
-    //db.each("SELECT rowid AS id, title FROM blogposts", function(err, row) {
-    //  console.log(row.id + ":" + row.title);
-    //  //res.render('index', {
-    //  //  "posts" : row
-    //  //});
-    //  // response[row.id] = row.title;
-    //});
-    res.render('index', response);
-};
-
-exports.blog = function(db) {
+exports.index = function(db) {
   return function(req, res) {
-    db.each("SELECT rowid AS id, title FROM blogposts", function(err, row) {
-      res.render('blog', {
-        'posts': row
-      });
+    db.all("SELECT rowid AS id, author, title, post FROM blogposts", function(err, posts) {
+      res.render('blog', { 'posts': posts });
     });
   };
 };
 
-//exports.index = function(db) {
-//  return function(req, res){
-//    var response = {title: "POP"};
-//      console.log(row.id + ":" + row.title);
-//      //res.render('index', {
-//      //  "posts" : row
-//      //});
-//      // response[row.id] = row.title;
-//      res.render('index', response);
-//    });
-//  };
-//};
+exports.newpost = function(req, res){
+  res.render('newpost', { title: 'Add New Post' });
+};
+
+exports.addpost = function(db) {
+  return function(req,res) {
+
+    console.log(JSON.stringify(req));
+    res.render('temp', { 'req': req});
+    // Get our form values. These rely on the "name" attributes
+    //var author = req.body.author;
+    //var title = req.body.title;
+    //var post = req.body.post;
+
+    //var stmt = db.prepare("INSERT INTO blogposts(author,title,post) VALUES (#{author},#{title},#{post})");
+    //stmt.run();
+    //stmt.finalize();
+    //db.close();
+    //res.location("/");
+    //// And forward to success page
+    //res.redirect("userlist");
+  };
+};

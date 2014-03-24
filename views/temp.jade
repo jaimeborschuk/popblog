@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1.
+    Blog Posts
+  ul
+    each thing in req
+      li
+        p #{thing}
