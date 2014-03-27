@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= pagetitle
+  if id
+    form#formUpdatePost(name="updatepost",method="post",action="/updatepost/#{id}")
+      input#inputAuthor(type="text", value=author, name="author")
+      input#inputTitle(type="text", value=title, name="title")
+      textarea#inputPost(name="post") 
+        = post
+      button#btnSubmit(type="submit") submit
+  else
+    form#formAddPost(name="addpost",method="post",action="/addpost")
+      input#inputAuthor(type="text", placeholder="Author", name="author")
+      input#inputTitle(type="text", placeholder="Title", name="title")
+      textarea#inputPost(name="post", placeholder="Loruuum Ipsuuum, mate") 
+      button#btnSubmit(type="submit") submit
